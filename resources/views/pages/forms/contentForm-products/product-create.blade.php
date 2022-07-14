@@ -1,19 +1,14 @@
-@extends('layout')  {{--ke thua view layout--}}
+@extends('layout')
 
-@section('title', "Home - About us")   {{--'key', "value"--}}
-
-@section('main')
-    <h1>About us page</h1>
-    <h1>Demo extends layout</h1>
-@endsection
+@section('title', "Product Create - Forms")
 
 @section('open-menu')
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -22,7 +17,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link active">
+                        <a href="./index.html" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Dashboard v1</p>
                         </a>
@@ -192,8 +187,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+            <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Forms
@@ -214,7 +209,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/product-create" class="nav-link">
+                        <a href="/product-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Product Create</p>
                         </a>
@@ -261,13 +256,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/tables/simple.html" class="nav-link">
+                        <a href="/category-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Category List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/tables/simple.html" class="nav-link">
+                        <a href="/products-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Product List</p>
                         </a>
@@ -574,4 +569,81 @@
             </li>
         </ul>
     </nav>
+@endsection
+
+@section('content-header')
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Product Forms - Create</h1>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                <li class="breadcrumb-item active">Product Create</li>
+            </ol>
+        </div>
+    </div>
+@endsection
+
+@section('main')
+    <div class="row">
+        <!-- column -->
+        <div class="col-sm-10 mx-auto">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Create</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" placeholder="Auto increment primary key..." disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="Input Name..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" class="form-control" placeholder="Input Price..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Unit</label>
+                            <input type="text" class="form-control" placeholder="Input Unit..." required>
+                        </div>
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="5" placeholder="Input Description..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Image</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg>
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-0">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                                <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!--/.col -->
+    </div>
 @endsection
