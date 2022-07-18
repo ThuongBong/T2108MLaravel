@@ -1,19 +1,14 @@
-@extends('layout')  {{--ke thua view layout--}}
+@extends('layout')
 
-@section('title', "Home - About us")   {{--'key', "value"--}}
-
-@section('main')
-    <h1>About us page</h1>
-    <h1>Demo extends layout</h1>
-@endsection
+@section('title', "Score Create - Forms")
 
 @section('open-menu')
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -22,7 +17,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link active">
+                        <a href="./index.html" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Dashboard v1</p>
                         </a>
@@ -192,8 +187,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+            <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Forms
@@ -202,7 +197,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-create" class="nav-link">
+                        <a href="/classes-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes</p>
                         </a>
@@ -220,7 +215,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/score-create" class="nav-link">
+                        <a href="/score-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Score</p>
                         </a>
@@ -586,4 +581,87 @@
             </li>
         </ul>
     </nav>
+@endsection
+
+@section('content-header')
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Score Forms - Create</h1>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                <li class="breadcrumb-item active">Score Create</li>
+            </ol>
+        </div>
+    </div>
+@endsection
+
+@section('main')
+    <div class="row">
+        <!-- column -->
+        <div class="col-sm-10 mx-auto">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Create</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Score ID</label>
+                            <input type="text" class="form-control" placeholder="AUTO_INCREMENT ID..." disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Score <span style="color: red">*</span></label>
+                            <input type="text" class="form-control" placeholder="Input Score..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Result <span style="color: red">*</span></label>
+                            <input type="text" class="form-control" placeholder="Input Result..." required>
+                        </div>
+                        <!-- combobox -->
+                        <div class="form-group">
+                            <label>Student ID <span style="color: red">*</span></label>
+                            <select class="custom-select" required>
+                                <option value="">choose</option>
+                                <option value="option 1">option 1</option>
+                                <option value="option 2">option 2</option>
+                                <option value="option 3">option 3</option>
+                                <option value="option 4">option 4</option>
+                                <option value="option 5">option 5</option>
+                            </select>
+                        </div>
+                        <!-- combobox -->
+                        <div class="form-group">
+                            <label>Subject ID <span style="color: red">*</span></label>
+                            <select class="custom-select" required>
+                                <option value="">choose</option>
+                                <option value="option 1">option 1</option>
+                                <option value="option 2">option 2</option>
+                                <option value="option 3">option 3</option>
+                                <option value="option 4">option 4</option>
+                                <option value="option 5">option 5</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-0">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="type[]" class="custom-control-input" id="exampleCheck1" required>
+                                <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!--/.col -->
+    </div>
 @endsection

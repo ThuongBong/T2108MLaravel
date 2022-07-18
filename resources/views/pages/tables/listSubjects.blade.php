@@ -1,19 +1,14 @@
-@extends('layout')  {{--ke thua view layout--}}
+@extends('layout')
 
-@section('title', "Home - About us")   {{--'key', "value"--}}
-
-@section('main')
-    <h1>About us page</h1>
-    <h1>Demo extends layout</h1>
-@endsection
+@section('title', "Subjects List")
 
 @section('open-menu')
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -22,7 +17,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link active">
+                        <a href="./index.html" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Dashboard v1</p>
                         </a>
@@ -251,8 +246,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+            <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-table"></i>
                     <p>
                         Tables
@@ -273,7 +268,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subjects-list" class="nav-link">
+                        <a href="/subjects-list" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subjects List</p>
                         </a>
@@ -586,4 +581,81 @@
             </li>
         </ul>
     </nav>
+@endsection
+
+@section('content-header')
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Subjects List</h1>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                <li class="breadcrumb-item active">Subjects List</li>
+            </ol>
+        </div>
+    </div>
+@endsection
+
+@section('main')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Subjects List</h3>
+
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>Subject ID</th>
+                            <th>Subject Name</th>
+                            <th>Action</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>183</td>
+                            <td>Shoes</td>
+                            <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
+                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        </tr>
+                        <tr>
+                            <td>219</td>
+                            <td>Shirt</td>
+                            <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
+                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        </tr>
+                        <tr>
+                            <td>657</td>
+                            <td>Beef</td>
+                            <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
+                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        </tr>
+                        <tr>
+                            <td>175</td>
+                            <td>Beer</td>
+                            <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
+                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
 @endsection

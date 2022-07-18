@@ -6,32 +6,52 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-   public function aboutUs() {
-       return view("about-us");
-   }
+    //home
+    public function aboutUs(){
+        return view('about-us');
+    }
+
     //form
-    public function categoryCreate(){
-        return view('pages.forms.contentForm-category.category-create');
+    public function classesCreate(){
+        return view('pages.forms.classes-forms.classes-create');
     }
 
-    public function categoryEdit(){
-        return view('pages.forms.contentForm-category.category-edit');
+    public function classesEdit(){
+        return view('pages.forms.classes-forms.classes-edit');
     }
 
-    public function productCreate(){
-        return view('pages.forms.contentForm-products.product-create');
+    public function studentCreate(){
+        return view('pages.forms.student-forms.student-create');
     }
 
-    public function productEdit(){
-        return view('pages.forms.contentForm-products.product-edit');
+    public function studentEdit(){
+        return view('pages.forms.student-forms.student-edit');
+    }
+
+    public function subjectCreate(){
+        return view('pages.forms.subject-forms.subject-create');
+    }
+
+    public function subjectEdit(){
+        return view('pages.forms.subject-forms.subject-edit');
+    }
+
+    public function scoreCreate(){
+        return view('pages.forms.score-forms.score-create');
+    }
+
+    public function scoreEdit(){
+        return view('pages.forms.score-forms.score-edit');
     }
 
     //table
-    public function listCategory(){
-        return view('pages.tables.listCategory');
+
+
+    public function listSubject(){
+        return view('pages.tables.listSubjects');
     }
 
-    public function listProducts(){
-        return view('pages.tables.listProducts');
+    public function listScores(){
+        return view('pages.tables.listScores');
     }
 }

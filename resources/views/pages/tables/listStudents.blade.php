@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "Products List")
+@section('title', "Students List")
 
 @section('open-menu')
     <nav class="mt-2">
@@ -188,7 +188,7 @@
                 </ul>
             </li>
             <li class="nav-item has-treeview">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Forms
@@ -197,27 +197,27 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/category-create" class="nav-link active">
+                        <a href="/classes-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Category Create</p>
+                            <p>Classes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/category-edit" class="nav-link">
+                        <a href="/student-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Category Edit</p>
+                            <p>Student</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/product-create" class="nav-link">
+                        <a href="/subject-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Product Create</p>
+                            <p>Subject</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/product-edit" class="nav-link">
+                        <a href="/score-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Product Edit</p>
+                            <p>Score</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -256,15 +256,27 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/category-list" class="nav-link">
+                        <a href="/classes-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Category List</p>
+                            <p>Classes List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/products-list" class="nav-link active">
+                        <a href="/students-list" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Product List</p>
+                            <p>Students List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/subjects-list" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Subjects List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/scores-list" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Scores List</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -574,12 +586,12 @@
 @section('content-header')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1>Products List</h1>
+            <h1>Students List</h1>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active">Products List</li>
+                <li class="breadcrumb-item active">Students List</li>
             </ol>
         </div>
     </div>
@@ -590,7 +602,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Products List</h3>
+                    <h3 class="card-title">Students List</h3>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -607,59 +619,28 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Unit</th>
-                            <th>Description</th>
-                            <th>Image</th>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Birthday</th>
+                            <th>Class ID</th>
                             <th>Action</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($students as $item)
                         <tr>
-                            <td>183</td>
-                            <td>Shoes</td>
-                            <td>100$</td>
-                            <td>noun</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td></td>
-                            <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
+                            <td>{{$item->studentID }}</td>
+                            <td>{{$item->studentName}}</td>
+                            <td>{{$item->birthday}}</td>
+                            <td>{{$item->classID }}</td>
+                            <td><a href="/student-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
                             <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
                         </tr>
-                        <tr>
-                            <td>219</td>
-                            <td>Shirt</td>
-                            <td>80$</td>
-                            <td>noun</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td></td>
-                            <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
-                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>657</td>
-                            <td>Beef</td>
-                            <td>50$</td>
-                            <td>noun</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td></td>
-                            <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
-                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>175</td>
-                            <td>Beer</td>
-                            <td>10$</td>
-                            <td>noun</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td></td>
-                            <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
-                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
+                    {!! $students->links() !!}
                 </div>
                 <!-- /.card-body -->
             </div>

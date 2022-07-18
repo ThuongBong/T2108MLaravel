@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "Category List")
+@section('title', "Classes Edit - Forms")
 
 @section('open-menu')
     <nav class="mt-2">
@@ -187,7 +187,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
@@ -197,27 +197,27 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/category-create" class="nav-link active">
+                        <a href="/classes-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Category Create</p>
+                            <p>Classes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/category-edit" class="nav-link">
+                        <a href="/student-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Category Edit</p>
+                            <p>Student</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/product-create" class="nav-link">
+                        <a href="/subject-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Product Create</p>
+                            <p>Subject</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/product-edit" class="nav-link">
+                        <a href="/score-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Product Edit</p>
+                            <p>Score</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -246,8 +246,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-table"></i>
                     <p>
                         Tables
@@ -256,15 +256,27 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/category-list" class="nav-link active">
+                        <a href="/classes-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Category List</p>
+                            <p>Classes List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/products-list" class="nav-link">
+                        <a href="/students-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Product List</p>
+                            <p>Students List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/subjects-list" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Subjects List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/scores-list" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Scores List</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -574,12 +586,12 @@
 @section('content-header')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1>Category List</h1>
+            <h1>Classes Forms - Edit</h1>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active">Category List</li>
+                <li class="breadcrumb-item active">Classes Edit</li>
             </ol>
         </div>
     </div>
@@ -587,69 +599,46 @@
 
 @section('main')
     <div class="row">
-        <div class="col-12">
-            <div class="card">
+        <!-- column -->
+        <div class="col-sm-10 mx-auto">
+            <!-- general form elements -->
+            <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Category List</h3>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    <h3 class="card-title">Edit</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Class ID</label>
+                            <input type="text" class="form-control" placeholder="Output Class ID..." disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Class Name <span style="color: red">*</span></label>
+                            <input type="text" class="form-control" placeholder="Output Class Name..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Class Room <span style="color: red">*</span></label>
+                            <input type="text" class="form-control" placeholder="Output Class Room..." required>
+                        </div>
+                        <div class="form-group mb-0">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="type[]" class="custom-control-input" id="exampleCheck1" required>
+                                <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>183</td>
-                                <td>John Doe</td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
-                                <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                            </tr>
-                            <tr>
-                                <td>219</td>
-                                <td>Alexander Pierce</td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
-                                <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                            </tr>
-                            <tr>
-                                <td>657</td>
-                                <td>Bob Doe</td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
-                                <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                            </tr>
-                            <tr>
-                                <td>175</td>
-                                <td>Mike Doe</td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                <td><a><button type="button" class="btn btn-info">Edit</button></a></td>
-                                <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.card-body -->
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="/classes-list"><button type="button" class="btn btn-info float-right">Back List</button></a>
+                    </div>
+                </form>
             </div>
             <!-- /.card -->
         </div>
+        <!--/.col -->
     </div>
-    <!-- /.row -->
 @endsection
