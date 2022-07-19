@@ -622,7 +622,7 @@
                             <th>Student ID</th>
                             <th>Student Name</th>
                             <th>Birthday</th>
-                            <th>Class ID</th>
+                            <th>Class Name</th>
                             <th>Action</th>
                             <th>Action</th>
                         </tr>
@@ -633,7 +633,7 @@
                             <td>{{$item->studentID }}</td>
                             <td>{{$item->studentName}}</td>
                             <td>{{$item->birthday}}</td>
-                            <td>{{$item->classID }}</td>
+                            <td>{{$item->classes->className }}</td>
                             <td><a href="/student-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
                             <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
                         </tr>

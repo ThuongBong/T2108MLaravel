@@ -622,6 +622,7 @@
                                 <th>Class ID</th>
                                 <th>Class Name</th>
                                 <th>Class Room</th>
+                                <th>Student Count</th>
                                 <th>Action</th>
                                 <th>Action</th>
                             </tr>
@@ -632,6 +633,7 @@
                                 <td>{{$item->classID }}</td>
                                 <td>{{$item->className }}</td>
                                 <td>{{$item->classRoom}}</td>
+                                <td>{{$item->students_count}}</td>
                                 <td></a><a href="/classes-edit"><button type="button" class="btn btn-info">Edit</button></td>
                                 <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
                             </tr>

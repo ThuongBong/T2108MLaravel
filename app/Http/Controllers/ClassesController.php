@@ -14,7 +14,7 @@ class ClassesController extends Controller
 //            ->limit(5)
 //            ->skip(5)
 //            ->get(); api
-        $classes = Classes::simplePaginate(5);
+        $classes = Classes::withCount("students")->simplePaginate(5);
         return view("pages.tables.listClasses", [
             "classes"=>$classes
         ]);

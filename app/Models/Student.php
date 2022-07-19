@@ -20,4 +20,8 @@ class Student extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function classes() {
+        return $this->belongsTo(Classes::class, "classID", "classID");
+    }
 }
