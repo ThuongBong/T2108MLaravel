@@ -602,17 +602,27 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
+                    <form method="get" action="{{'/students-list'}}">
                     <h3 class="card-title">Students List</h3>
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group input-group-sm" style="width: 450px;">
+                            <select name="classID" class="form-control float-right">
+                                <option value="">Select Class</option>
+                                @foreach($classList as $item)
+                                    <option value="{{$item->classID}}">{{$item->className}}</option>
+                                @endforeach
+                            </select>
+                            <input type="text" name="name" class="form-control float-right" placeholder="Search by name">
+                            <input type="date" name="birthStart" class="form-control float-right">
+                            <input type="date" name="birthEnd" class="form-control float-right">
 
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
