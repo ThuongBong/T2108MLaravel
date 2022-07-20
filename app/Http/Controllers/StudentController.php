@@ -25,4 +25,23 @@ class StudentController extends Controller
             "classList"=>$classList
         ]);
     }
+
+    public function form(){
+        $classList = Classes::all();
+        return view("pages.forms.student-forms.student-create",
+            ['classesList'=>$classList]
+        );
+    }
+
+    public function Create(Request $request){
+            Student::create(
+                [
+                    "studentID"=>$request->get("studentID"),
+                    "studentName"=>$request->get("studentName"),
+                    "birthday"=>$request->get("birthday"),
+                    "classID"=>$request->get("classID")
+                ]
+            );
+            return redirect()->to("/students-list");
+    }
 }

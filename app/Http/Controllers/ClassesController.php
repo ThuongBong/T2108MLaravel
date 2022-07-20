@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ClassesController extends Controller
 {
-    public  function  listClasses() {
+    public  function  listClasses(Request $request) {
 //        $classes = Classes::all();
 //        dd($classes);
 //        $classes = Classes::orderBy("name","asc")
@@ -14,9 +14,24 @@ class ClassesController extends Controller
 //            ->limit(5)
 //            ->skip(5)
 //            ->get(); api
-        $classes = Classes::withCount("students")->simplePaginate(5);
+        $paramName = $request->get("sName");
+        $classes = Classes::Search($paramName)->withCount("students")->simplePaginate(5);
         return view("pages.tables.listClasses", [
             "classes"=>$classes
         ]);
+    }
+
+    public function classesForm() {
+        return view("pages.forms.classes-forms.classes-create");
+    }
+    public function classesCreate(Request $request) {
+        Classes::create(
+            [
+                "classID"=>$request->get("classID"),
+                "className"=>$request->get("className"),
+                "classRoom"=>$request->get("classRoom"),
+            ]
+        );
+        return redirect()->to("/classes-list");
     }
 }

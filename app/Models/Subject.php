@@ -14,8 +14,16 @@ class Subject extends Model
     protected $keyType = 'string';  //kiểu dữ liệu subjectID
 
     protected $fillable = [
+        'subjectID',
         'subjectName',
         'created_at',
         'updated_at'
     ];
+
+    public function scopeSearch($query, $search='') {
+        if ($search != null && $search != '') {
+            return $query->where("subjectName","like",'%'.$search."%");
+        }
+        return $query;
+    }
 }

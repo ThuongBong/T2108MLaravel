@@ -608,42 +608,40 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form"  method="post" action="{{url("/score-create")}}">
+                    @csrf
+                    @method("post")
                     <div class="card-body">
                         <div class="form-group">
                             <label>Score ID</label>
-                            <input type="text" class="form-control" placeholder="AUTO_INCREMENT ID..." disabled>
+                            <input type="text" name="scoreID" class="form-control" placeholder="AUTO_INCREMENT ID..." disabled>
                         </div>
                         <div class="form-group">
                             <label>Score <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input Score..." required>
+                            <input type="text" name="score" class="form-control" placeholder="Input Score..." required>
                         </div>
                         <div class="form-group">
                             <label>Result <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input Result..." required>
+                            <input type="text" name="result" class="form-control" placeholder="Input Result..." required>
                         </div>
                         <!-- combobox -->
                         <div class="form-group">
                             <label>Student ID <span style="color: red">*</span></label>
-                            <select class="custom-select" required>
+                            <select name="studentID" class="custom-select" required>
                                 <option value="">choose</option>
-                                <option value="option 1">option 1</option>
-                                <option value="option 2">option 2</option>
-                                <option value="option 3">option 3</option>
-                                <option value="option 4">option 4</option>
-                                <option value="option 5">option 5</option>
+                                @foreach($studentList as $item)
+                                    <option value="{{$item->studentID}}">{{$item->studentName}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <!-- combobox -->
                         <div class="form-group">
                             <label>Subject ID <span style="color: red">*</span></label>
-                            <select class="custom-select" required>
+                            <select name="subjectID" class="custom-select" required>
                                 <option value="">choose</option>
-                                <option value="option 1">option 1</option>
-                                <option value="option 2">option 2</option>
-                                <option value="option 3">option 3</option>
-                                <option value="option 4">option 4</option>
-                                <option value="option 5">option 5</option>
+                                @foreach($subjectList as $item)
+                                    <option value="{{$item->subjectID}}">{{$item->subjectName}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group mb-0">
@@ -656,7 +654,8 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary float-left">Submit</button>
+                        <a href="/scores-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

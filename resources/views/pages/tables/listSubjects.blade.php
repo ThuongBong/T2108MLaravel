@@ -589,10 +589,7 @@
             <h1>Subjects List</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active">Subjects List</li>
-            </ol>
+            <a href="/classes-create"><button type="button" class="btn btn-primary float-right">Add Subject</button></a>
         </div>
     </div>
 @endsection
@@ -602,17 +599,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Subjects List</h3>
+                    <form method="get" action="{{"/subjects-list"}}">
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                            <input type="text" value="{{app("request")->input("name")}}" name="name" class="form-control float-right" placeholder="Search">
 
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
@@ -626,32 +624,17 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($subject as $item)
                         <tr>
-                            <td>183</td>
-                            <td>Shoes</td>
+                            <td>{{$item->subjectID}}</td>
+                            <td>{{$item->subjectName}}</td>
                             <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
                             <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
                         </tr>
-                        <tr>
-                            <td>219</td>
-                            <td>Shirt</td>
-                            <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
-                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>657</td>
-                            <td>Beef</td>
-                            <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
-                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>175</td>
-                            <td>Beer</td>
-                            <td><a href="/subject-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
-                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
+                    {!!$subject->links()!!}
                 </div>
                 <!-- /.card-body -->
             </div>

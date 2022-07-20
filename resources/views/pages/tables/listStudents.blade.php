@@ -589,33 +589,28 @@
             <h1>Students List</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active">Students List</li>
-            </ol>
+            <a href="/student-create"><button type="submit" class="btn btn-primary float-right">Add Student</button></a>
         </div>
     </div>
 @endsection
-
 @section('main')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <form method="get" action="{{'/students-list'}}">
-                    <h3 class="card-title">Students List</h3>
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 450px;">
+                        <div class="input-group input-group-sm" style="width: 550px;">
                             <select name="classID" class="form-control float-right">
                                 <option value="">Select Class</option>
                                 @foreach($classList as $item)
-                                    <option value="{{$item->classID}}">{{$item->className}}</option>
+                                    <option @if(app("request")->input("classID")== $item->classID) selected @endif value="{{$item->classID}}">{{$item->className}}</option>
                                 @endforeach
                             </select>
-                            <input type="text" name="name" class="form-control float-right" placeholder="Search by name">
-                            <input type="date" name="birthStart" class="form-control float-right">
-                            <input type="date" name="birthEnd" class="form-control float-right">
+                            <input type="date" value="{{app("request")->input("birthStart")}}" name="birthStart" class="form-control float-right">
+                            <input type="date" value="{{app("request")->input("birthEnd")}}" name="birthEnd" class="form-control float-right">
+                            <input type="text" value="{{app("request")->input("name")}}" name="name" class="form-control float-right" placeholder="Search by name">
 
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
@@ -650,7 +645,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {!! $students->links() !!}
+                    {!! $students->appends(app("request")->input())->links() !!}
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -14,6 +14,7 @@ class Student extends Model
     protected $keyType ='string';
 
     protected $fillable = [
+        'studentID',
         'studentName',
         'birthday',
         'classID',
@@ -39,9 +40,9 @@ class Student extends Model
         return $query;
     }
 
-    public function scopeStartDate($query,$form_date=''){
-        if($form_date != null && $form_date != '') {
-            return $query->where("birthday",'>=',$form_date);
+    public function scopeStartDate($query,$from_date=''){
+        if($from_date != null && $from_date != '') {
+            return $query->where("birthday",'>=',$from_date);
         }
         return  $query;
     }
@@ -52,4 +53,5 @@ class Student extends Model
         }
         return  $query;
     }
+
 }

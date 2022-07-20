@@ -608,15 +608,17 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form" method="post" action="{{url("subject-create")}}">
+                    @csrf
+                    @method("post")
                     <div class="card-body">
                         <div class="form-group">
                             <label>Subject ID <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input Subject ID..." required>
+                            <input type="text" name="subjectID" class="form-control" placeholder="Input Subject ID..." required>
                         </div>
                         <div class="form-group">
                             <label>Subject Name <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input Subject Name..." required>
+                            <input type="text" name="subjectName" class="form-control" placeholder="Input Subject Name..." required>
                         </div>
                         <div class="form-group mb-0">
                             <div class="custom-control custom-checkbox">
@@ -628,7 +630,8 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary float-left">Submit</button>
+                        <a href="/subjects-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

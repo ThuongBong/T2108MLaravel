@@ -13,6 +13,7 @@ class Classes extends Model
     protected $keyType ='string';   //kieu du lieu cua classID
 
     protected $fillable = [
+        "classID",
         "className",
         "classRoom",
         "created_at",
@@ -22,4 +23,11 @@ class Classes extends Model
     public function students(){
         return $this->hasMany(Student::class, "classID","classID");
 }
+
+    public function scopeSearch($query, $search=''){
+        if ($search != null && $search != '') {
+            return $query->where("classRoom","like",'%'.$search."%");
+        }
+        return $query;
+    }
 }

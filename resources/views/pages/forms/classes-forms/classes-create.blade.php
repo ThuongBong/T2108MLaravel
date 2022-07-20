@@ -608,19 +608,21 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form" method="post" action="{{url("classes-create")}}">
+                    @csrf
+                    @method("post")
                     <div class="card-body">
                         <div class="form-group">
                             <label>Class ID <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input Class ID..." required>
+                            <input type="text" name="classID" class="form-control" placeholder="Input Class ID..." required>
                         </div>
                         <div class="form-group">
                             <label>Class Name <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input Class Name..." required>
+                            <input type="text" name="className" class="form-control" placeholder="Input Class Name..." required>
                         </div>
                         <div class="form-group">
                             <label>Class Room <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Input Class Room..." required>
+                            <input type="text" name="classRoom" class="form-control" placeholder="Input Class Room..." required>
                         </div>
                         <div class="form-group mb-0">
                             <div class="custom-control custom-checkbox">
@@ -632,7 +634,8 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary float-left">Submit</button>
+                        <a href="/classes-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

@@ -589,10 +589,7 @@
             <h1>Classes List</h1>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active">Classes List</li>
-            </ol>
+            <a href="/classes-create"><button type="button" class="btn btn-primary float-right">Add Class</button></a>
         </div>
     </div>
 @endsection
@@ -602,17 +599,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Classes List</h3>
+                    <form method="get" action="{{"/classes-list"}}">
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group input-group-sm" style="width: 250px;">
+                            <input type="text" value="{{app("request")->input("sName")}}" name="sName" class="form-control float-right" placeholder="Search">
 
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
