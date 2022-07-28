@@ -197,25 +197,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-create" class="nav-link active">
+                        <a href="/admin/classes-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/student-create" class="nav-link">
+                        <a href="/admin/student-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Student</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subject-create" class="nav-link">
+                        <a href="/admin/subject-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subject</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/score-create" class="nav-link">
+                        <a href="/admin/score-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Score</p>
                         </a>
@@ -608,7 +608,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" method="post" action="{{url("classes-create")}}">
+                <form role="form" method="post" action="{{url("/admin/classes-create")}}">
                     @csrf
                     @method("post")
                     <div class="card-body">
@@ -635,7 +635,7 @@
 
                     <div class="card-footer col-md-12 text-center">
                         <button type="submit" class="btn btn-primary float-left">Submit</button>
-                        <a href="/classes-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
+                        <a href="/admin/classes-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

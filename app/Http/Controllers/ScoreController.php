@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class ScoreController extends Controller
 {
+    private $_GRID_URL = "/admin/scores-list";
     public function listScores(Request $request){
         $paramName = $request->get("name");
         $paramStudentID = $request->get("studentID");
@@ -43,6 +44,6 @@ class ScoreController extends Controller
                 "subjectID"=>$request->get("subjectID")
             ]
         );
-        return redirect()->to("/scores-list");
+        return redirect()->to($this->_GRID_URL);
     }
 }

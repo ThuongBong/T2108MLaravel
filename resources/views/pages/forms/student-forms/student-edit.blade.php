@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "Product Edit - Forms")
+@section('title', "Student Create - Forms")
 
 @section('open-menu')
     <nav class="mt-2">
@@ -197,25 +197,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-create" class="nav-link">
+                        <a href="/admin/classes-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/student-create" class="nav-link active">
+                        <a href="/admin/student-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Student</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subject-create" class="nav-link">
+                        <a href="/admin/subject-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subject</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/score-create" class="nav-link">
+                        <a href="/admin/score-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Score</p>
                         </a>
@@ -586,12 +586,12 @@
 @section('content-header')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1>Product Forms - Edit</h1>
+            <h1>Edit Student</h1>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active">Product Edit</li>
+                <li class="breadcrumb-item active">Student Edit</li>
             </ol>
         </div>
     </div>
@@ -608,15 +608,26 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form">
+                <form role="form" method="post" action="{{url("/admin/student-edit",['student'=>$student->studentID])}}">
+                    @csrf
+                    @method("put")
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Student ID</label>
-                            <input type="text" class="form-control" placeholder="Output Student ID..." disabled>
+                            <label>Student ID <span style="color: red">*</span></label>
+                            <input disabled value="{{$student->studentID}}" type="text" name="studentID" class="form-control" placeholder="Input Student ID..." required>
                         </div>
                         <div class="form-group">
                             <label>Student Name <span style="color: red">*</span></label>
-                            <input type="text" class="form-control" placeholder="Output Student Name..." required>
+                            <input type="text" value="{{$student->studentName}}" name="studentName" class="form-control" placeholder="Input Student Name..." required>
+                        </div>
+
+                        <!--uploads file-->
+                        <div class="form-group">
+                            <label class="exampleInputFile">File Image</label>
+                            <div>
+                                <input type="file" name="image" accept="image/png, image/gif, image/jpeg">
+                            </div>
+                            <img class="img-thumbnail" src="{{asset($student->image)}}" width="10%" height="10%" style="margin: 10px;">
                         </div>
                         <!-- Date dd/mm/yyyy -->
                         <div class="form-group">
@@ -625,19 +636,18 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                <input type="date" class="form-control">
+                                <input name="birthday" value="{{$student->birthday}}" type="date" class="form-control" placeholder="YYYY-MM-DD"
+                                       pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))">
                             </div>
                         </div>
                         <!-- combobox -->
                         <div class="form-group">
                             <label>Class ID <span style="color: red">*</span></label>
-                            <select class="custom-select" required>
+                            <select name="classID" class="custom-select" required>
                                 <option value="">choose</option>
-                                <option value="option 1">option 1</option>
-                                <option value="option 2">option 2</option>
-                                <option value="option 3">option 3</option>
-                                <option value="option 4">option 4</option>
-                                <option value="option 5">option 5</option>
+                                @foreach($classesList as $item)
+                                    <option @if($student->classID==$item->classID) selected @endif value="{{$item->classID}}">{{$item->className}}" ></option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group mb-0">
@@ -649,9 +659,9 @@
                     </div>
                     <!-- /.card-body -->
 
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="/students-list"><button type="button" class="btn btn-info float-right">Back List</button></a>
+                    <div class="card-footer col-md-12 ">
+                        <button type="submit" class="btn btn-primary float-left">Submit</button>
+                        <a href="/admin/students-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

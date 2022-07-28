@@ -197,25 +197,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-create" class="nav-link">
+                        <a href="/admin/classes-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/student-create" class="nav-link">
+                        <a href="/admin/student-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Student</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subject-create" class="nav-link">
+                        <a href="/admin/subject-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subject</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/score-create" class="nav-link active">
+                        <a href="/admin/score-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Score</p>
                         </a>
@@ -256,25 +256,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-list" class="nav-link">
+                        <a href="/admin/classes-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/students-list" class="nav-link">
+                        <a href="/admin/students-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Students List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subjects-list" class="nav-link">
+                        <a href="/admin/subjects-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subjects List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/scores-list" class="nav-link">
+                        <a href="/admin/scores-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Scores List</p>
                         </a>
@@ -657,7 +657,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="/scores-list"><button type="button" class="btn btn-info float-right">Back List</button></a>
+                        <a href="/admin/scores-list"><button type="button" class="btn btn-info float-right">Back List</button></a>
                     </div>
                 </form>
             </div>

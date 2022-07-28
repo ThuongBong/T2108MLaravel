@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class ClassesController extends Controller
 {
+    private $_GRID_URL = "/admin/classes-list";
     public  function  listClasses(Request $request) {
 //        $classes = Classes::all();
 //        dd($classes);
@@ -32,6 +33,6 @@ class ClassesController extends Controller
                 "classRoom"=>$request->get("classRoom"),
             ]
         );
-        return redirect()->to("/classes-list");
+        return redirect()->to($this->_GRID_URL);
     }
 }

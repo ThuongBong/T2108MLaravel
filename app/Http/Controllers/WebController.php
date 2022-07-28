@@ -20,10 +20,6 @@ class WebController extends Controller
         return view('pages.forms.classes-forms.classes-edit');
     }
 
-    public function studentEdit(){
-        return view('pages.forms.student-forms.student-edit');
-    }
-
     public function subjectCreate(){
         return view('pages.forms.subject-forms.subject-create');
     }

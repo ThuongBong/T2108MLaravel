@@ -197,25 +197,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-create" class="nav-link">
+                        <a href="/admin/classes-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/student-create" class="nav-link active">
+                        <a href="/admin/student-create" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Student</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subject-create" class="nav-link">
+                        <a href="/admin/subject-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subject</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/score-create" class="nav-link">
+                        <a href="/admin/score-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Score</p>
                         </a>
@@ -256,25 +256,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-list" class="nav-link">
+                        <a href="/admin/classes-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/students-list" class="nav-link">
+                        <a href="/admin/students-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Students List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subjects-list" class="nav-link">
+                        <a href="/admin/subjects-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subjects List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/scores-list" class="nav-link">
+                        <a href="/admin/scores-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Scores List</p>
                         </a>
@@ -608,42 +608,67 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" method="post" action="{{url("/student-create")}}">
+                <form role="form" method="post" action="{{url("/admin/student-create")}}" enctype="multipart/form-data">
                     @csrf
                     @method("post")
                     <div class="card-body">
                         <div class="form-group">
                             <label>Student ID <span style="color: red">*</span></label>
-                            <input type="text" name="studentID" class="form-control" placeholder="Input Student ID..." required>
+                            <input type="text" value="{{old("studentID")}}" name="studentID" class="form-control" placeholder="Input Student ID..." >
+                            @error("studentID")
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Student Name <span style="color: red">*</span></label>
-                            <input type="text" name="studentName" class="form-control" placeholder="Input Student Name..." required>
+                            <input type="text" value="{{old("studentName")}}" name="studentName" class="form-control" placeholder="Input Student Name..." >
+                            @error("studentName")
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <!--image-->
+                        <div class="form-group">
+                            <label for="exampleInputFile">Image</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="">Upload</span>
+                                </div>
+                            </div>
+                            @error("image")
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                         <!-- Date dd/mm/yyyy -->
                         <div class="form-group">
                             <label>Birthday</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                <div style="width: 100%">
+                                    <input name="birthday" value="{{old("birthday")}}" type="date" class="form-control" placeholder="YYYY-MM-DD"
+                                           pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))">
+                               </div>
+                                <div>
+                                    @error("birthday")
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
-                                <input name="birthday" type="date" class="form-control" placeholder="YYYY-MM-DD"
-                                       pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))">
                             </div>
                         </div>
                         <!-- combobox -->
                         <div class="form-group">
                             <label>Class ID <span style="color: red">*</span></label>
-                            <select name="classID" class="custom-select" required>
-                                <option value="">choose</option>
+                            <select name="classID" class="custom-select" >
                                 @foreach($classesList as $item)
-                                    <option value="{{$item->classID}}">{{$item->className}}</option>
+                                    <option @if(old("classID")== $item->classID) selected @endif value="{{$item->classID}}">{{$item->className}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group mb-0">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" name="type[]" class="custom-control-input" id="exampleCheck1" required>
+                                <input type="checkbox" name="type[]" class="custom-control-input" id="exampleCheck1" >
                                 <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
                             </div>
                         </div>
@@ -652,7 +677,7 @@
 
                     <div class="card-footer col-md-12 ">
                         <button type="submit" class="btn btn-primary float-left">Submit</button>
-                        <a href="/students-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
+                        <a href="/admin/students-list"><button type="button" class="btn btn-primary float-right">Back list</button></a>
                     </div>
                 </form>
             </div>

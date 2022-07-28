@@ -197,25 +197,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-create" class="nav-link">
+                        <a href="/admin/classes-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/student-create" class="nav-link">
+                        <a href="/admin/student-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Student</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subject-create" class="nav-link">
+                        <a href="/admin/subject-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subject</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/score-create" class="nav-link">
+                        <a href="/admin/score-create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Score</p>
                         </a>
@@ -256,19 +256,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/classes-list" class="nav-link">
+                        <a href="/admin/classes-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Classes List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/students-list" class="nav-link active">
+                        <a href="/admin/students-list" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Students List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/subjects-list" class="nav-link">
+                        <a href="/admin/subjects-list" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Subjects List</p>
                         </a>
@@ -589,7 +589,7 @@
             <h1>Students List</h1>
         </div>
         <div class="col-sm-6">
-            <a href="/student-create"><button type="submit" class="btn btn-primary float-right">Add Student</button></a>
+            <a href="/admin/student-create"><button type="submit" class="btn btn-primary float-right">Add Student</button></a>
         </div>
     </div>
 @endsection
@@ -598,7 +598,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <form method="get" action="{{'/students-list'}}">
+                    <form method="get" action="{{'/admin/students-list'}}">
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 550px;">
@@ -626,6 +626,7 @@
                         <tr>
                             <th>Student ID</th>
                             <th>Student Name</th>
+                            <th>Image</th>
                             <th>Birthday</th>
                             <th>Class Name</th>
                             <th>Action</th>
@@ -637,10 +638,17 @@
                         <tr>
                             <td>{{$item->studentID }}</td>
                             <td>{{$item->studentName}}</td>
+                            <td><img src="{{$item->getImage()}}" class="img-circle" width="70px" height="auto"></td>
                             <td>{{$item->birthday}}</td>
                             <td>{{$item->classes->className }}</td>
-                            <td><a href="/student-edit"><button type="button" class="btn btn-info">Edit</button></a></td>
-                            <td><a><button type="button" class="btn btn-danger">Delete</button></a></td>
+                            <td><a href="{{url('/admin/student-edit',['id'=>$item->studentID])}}"><button type="button" class="btn btn-info">Edit</button></a></td>
+                            <td>
+                            <form action="{{url("/admin/student-delete",['student'=>$item->studentID])}}" method="post">
+                                @csrf
+                                @method("delete")
+                                <button type="submit" onclick="return confirm('delete Student {{$item->studentName}}?')" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>

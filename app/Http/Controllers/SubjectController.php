@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
+    private $_GRID_URL = "/admin/subjects-list";
     public function listSubject(Request $request) {
         $paramName = $request->get("name");
         $subject = Subject::Search($paramName)->simplePaginate(5);
@@ -26,6 +27,6 @@ class SubjectController extends Controller
                 "subjectName"=>$request->get("subjectName")
             ]
         );
-        return redirect()->to("/subjects-list");
+        return redirect()->to($this->_GRID_URL);
     }
 }
